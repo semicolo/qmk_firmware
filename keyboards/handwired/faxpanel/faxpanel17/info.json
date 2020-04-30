@@ -1,0 +1,37 @@
+{
+  "keyboard_name": "Fax Panel 17",
+  "url": "",
+  "maintainer": "qmk",
+  "width": 8,
+  "height": 3,
+  "layouts": {
+    "LAYOUT_17": {
+      "layout": [
+        {"label":"A", "x":0, "y":0},
+        {"label":"B", "x":1, "y":0},
+        {"label":"C", "x":2, "y":0},
+        {"label":"D", "x":3, "y":0},
+        {"label":"E", "x":4, "y":0},
+        {"label":"F", "x":5, "y":0},
+        {"label":"G", "x":6, "y":0},
+        {"label":"H", "x":7, "y":0},
+        {"label":"1", "x":0, "y":1},
+        {"label":"2", "x":1, "y":1},
+        {"label":"3", "x":2, "y":1},
+        {"label":"4", "x":3, "y":1},
+        {"label":"5", "x":4, "y":1},
+        {"label":"6", "x":5, "y":1},
+        {"label":"7", "x":6, "y":1},
+        {"label":"8", "x":7, "y":1},
+        {"label":"L", "x":0, "y":2},
+        {"label":"M", "x":1, "y":2},
+        {"label":"N", "x":2, "y":2},
+        {"label":"O", "x":3, "y":2},
+        {"label":"P", "x":4, "y":2},
+        {"label":"Q", "x":5, "y":2},
+        {"label":"R", "x":6, "y":2},
+        {"label":"S", "x":7, "y":2}
+      ]
+    }
+  }
+}
