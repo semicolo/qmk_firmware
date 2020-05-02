@@ -1,0 +1,6 @@
+#pragma once
+
+enum custom_keycodes {
+   CUSTKC_MODE = SAFE_RANGE, CUSTKC_START, CUSTKC_RESET, CUSTKC_CONTRAST, CUSTKC_FUNCTION
+};
+

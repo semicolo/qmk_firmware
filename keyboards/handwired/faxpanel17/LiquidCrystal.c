@@ -164,6 +164,12 @@ void LiquidCrystalSetCursor(uint8_t col, uint8_t row)
   LiquidCrystalCommand(LCD_SETDDRAMADDR | (col + liquidcrystalrowoffsets[row]));
 }
 
+void LiquidCrystalPrintNChars(const char* fmt, int num) {
+    for (int i=0; i<num; i++) {
+        LiquidCrystalWrite(fmt[i]);
+    }
+}
+
 void LiquidCrystalPrint(const char* fmt, ...) {
     for (int i=0; fmt[i]!=0; i++) {
         LiquidCrystalWrite(fmt[i]);

@@ -89,7 +89,7 @@
  * Everything input with pull-up except:
  * PA0-2 - Push Pull output 50MHz
  */
-#define VAL_GPIOACRL            0x88888111      /*  PA7...PA0 */
+#define VAL_GPIOACRL            0x88888333      /*  PA7...PA0 */
 #define VAL_GPIOACRH            0x88888888      /* PA15...PA8 */
 #define VAL_GPIOAODR            0xFFFFFFFF
 
@@ -99,7 +99,7 @@
  * PB8-15 - Push Pull output 50MHz
  */
 #define VAL_GPIOBCRL            0x88888888      /*  PB7...PB0 */
-#define VAL_GPIOBCRH            0x11111111      /* PB15...PB8 */
+#define VAL_GPIOBCRH            0x33333333      /* PB15...PB8 */
 #define VAL_GPIOBODR            0xFFFFFFFF
 
 /*
@@ -108,7 +108,7 @@
  * PC13    - Push Pull output  (LED).
  */
 #define VAL_GPIOCCRL            0x88888888      /*  PC7...PC0 */
-#define VAL_GPIOCCRH            0x88188888      /* PC15...PC8 */
+#define VAL_GPIOCCRH            0x88388888      /* PC15...PC8 */
 #define VAL_GPIOCODR            0xFFFFFFFF
 
 /*

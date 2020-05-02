@@ -4,8 +4,7 @@
 #include "util.h"
 #include "wait.h"
 
-#define LEDOFF 1
-#define LEDON 0
+#include "hardware.h"
 
 void setPortBMode(unsigned mode) {
   palSetPadMode(GPIOB, 8, mode);
@@ -47,17 +46,11 @@ void initFaxPanel(void) {
   palClearPad(GPIOA, 0);
   palSetPadMode(GPIOA, 1, PAL_MODE_OUTPUT_PUSHPULL); // gate on 74244
   palSetPad(GPIOA, 1);
-  palSetPadMode(GPIOA, 2, PAL_MODE_OUTPUT_PUSHPULL);
-  palClearPad(GPIOA, 2); // speaker
+  palSetPadMode(GPIOA, 6, PAL_MODE_OUTPUT_PUSHPULL);
+  palClearPad(GPIOA, 6); // speaker
 
   setPortBMode(PAL_MODE_OUTPUT_PUSHPULL);
   write259(0, 7); // enables beeps
-
-//   lc.begin(8, 2);
-//   lc.clear();
-//   lc.print("coucou u");
-//   lc.setCursor(40,0);
-//   lc.print("n test  ");
 
   write259(LEDOFF, 0); // send
   write259(LEDOFF, 1); // receive

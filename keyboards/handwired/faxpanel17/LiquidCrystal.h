@@ -60,6 +60,7 @@
   void LiquidCrystalClear(void);
   void LiquidCrystalHome(void);
 
+  void LiquidCrystalPrintNChars(const char* fmt, int num);
   void LiquidCrystalPrint(const char* fmt, ...);
   void LiquidCrystalNoDisplay(void);
   void LiquidCrystalDisplay(void);

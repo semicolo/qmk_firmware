@@ -21,19 +21,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_HAS_GHOST
 
 /* Set 0 if debouncing isn't needed */
-//  Modified by Xydane
-#define DEBOUNCE    1
+#define DEBOUNCE    5
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 //#define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
 //#define LOCKING_RESYNC_ENABLE
 
-/* Backlighting include */
-/*#define BACKLIGHT_PIN 19
-#define BACKLIGHT_LEVELS 5
-#define BACKLIGHT_BREATHING
-#define BREATHING_PERIOD 6*/
 /*
  * Feature disable options
  *  These options are also useful to firmware size reduction.
@@ -51,3 +45,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define NO_ACTION_ONESHOT
 //#define NO_ACTION_MACRO
 //#define NO_ACTION_FUNCTION
+
+/* USB Device descriptor parameter */
+#define VENDOR_ID       0xFEED
+#define PRODUCT_ID      0x6464
+#define DEVICE_VER      0x0001
+
+#define MANUFACTURER "QMK"
+#define PRODUCT "FaxPanel17"
+#define DESCRIPTION "QMK keyboard firmware with ChibiOS"
+
+/* key matrix size */
+#define MATRIX_ROWS 3
+#define MATRIX_COLS 8
+#define DIODE_DIRECTION COL2ROW
+
