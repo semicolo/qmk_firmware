@@ -16,13 +16,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include QMK_KEYBOARD_H
-#include "LiquidCrystal.h"
 #include "customKeyCodes.h"
-#include "customBehaviour.h"
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-	return custom_process_record_user(keycode, record);
-}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_17(
