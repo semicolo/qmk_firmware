@@ -33,19 +33,15 @@ void displayString(const char * string) {
 	LiquidCrystalPrintNChars(string+8, 8);
 }
 
-void displayMacro(uint8_t mode) {
+void displayMacroName(uint8_t mode) {
     displayString(macroNames[mode]);
 }
 
-uint8_t macroMode=0;
+int8_t macroIndex=0;
 uint8_t customString[16];
 
 uint8_t enteredPIN[MAXPINLENGTH]; // max length of PIN
 uint8_t enteredPINIndex=0;
-
-                    // clearCustomString();
-                    // sprintf((char*)customString, "%d",strlen(FAXPANELPIN));
-                    // displayString((char*)customString);
 
 uint8_t pinMatches(void) {
     if (enteredPINIndex!=strlen(FAXPANELPIN))
@@ -111,10 +107,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         } else {
         switch (keycode)
         {
+            case CUSTKC_RESET:
+                    enteredPINIndex=0;
             case CUSTKC_START:
             case CUSTKC_CONTRAST:
             case CUSTKC_MODE:
-            case CUSTKC_RESET:
             case CUSTKC_FUNCTION:
             case KC_ASTERISK:
             case KC_HASH:
@@ -125,7 +122,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             default:
                 if (pinMatches()) {
                     locked = false;
-                    displayString ("   Unlocked!!   ");
+                    macroIndex=0;
+                    displayMacroName(macroIndex);
                     break;
                 }
 
@@ -143,38 +141,75 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     {
         case CUSTKC_MODE:
         if (record->event.pressed) {
-		macroMode=0;
-            displayMacro(0);
+            macroIndex++;
         }
         break;
         case CUSTKC_RESET:
         if (record->event.pressed) {
-		macroMode=1;
-            displayMacro(1);
+            locked=true;
+            return false;
         }
         break;
         case CUSTKC_CONTRAST:
         if (record->event.pressed) {
-		macroMode=2;
-            displayMacro(2);
+            macroIndex--;
         }
         break;
         case CUSTKC_FUNCTION:
-        if (record->event.pressed) {
-		macroMode=3;
-            displayMacro(3);
-        }
+        // do something, maybe play a tune?
         break;
 
         case CUSTKC_START:
         if (record->event.pressed) {
-            SEND_STRING(macros[macroMode]);
+            SEND_STRING(macros[macroIndex]);
         }
-        break;
+        return false;
+//        break;
+        case KC_1:
+            macroIndex = 0;
+            break;
+        case KC_2:
+            macroIndex = 1;
+            break;
+        case KC_3:
+            macroIndex = 2;
+            break;
+        case KC_4:
+            macroIndex = 3;
+            break;
+        case KC_5:
+            macroIndex = 4;
+            break;
+        case KC_6:
+            macroIndex = 5;
+            break;
+        case KC_7:
+            macroIndex = 6;
+            break;
+        case KC_8:
+            macroIndex = 7;
+            break;
+        case KC_9:
+            macroIndex = 8;
+            break;
+        case KC_0:
+            macroIndex = 9;
+            break;
+        case KC_ASTERISK:
+            macroIndex = 10;
+            break;
+        case KC_HASH:
+            macroIndex = 11;
+            break;
 
-    default:
-	return true;
-        break;
+    }
+
+    if (record->event.pressed) {
+        if (macroIndex<0)
+            macroIndex=MACROSNUMBER-1;
+        if (macroIndex>=MACROSNUMBER)
+            macroIndex=0;
+        displayMacroName(macroIndex);
     }
     return false;
 };

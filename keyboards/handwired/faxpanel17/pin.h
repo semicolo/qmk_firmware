@@ -1,4 +1,4 @@
 #pragma once
 
-#define FAXPANELPIN "123456"
+#define FAXPANELPIN "12345"
 
