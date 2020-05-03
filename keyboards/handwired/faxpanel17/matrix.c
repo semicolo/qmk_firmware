@@ -28,38 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "wait.h"
 #include "hardware.h"
 #include "LiquidCrystal.h"
-
-// chibios pwm experiment
-static void pwmPeriodCallBack(PWMDriver *pwmp) {
-(void) pwmp;
-// do something or stop
-    pwmDisableChannel(&PWMD3, 0);
-    pwmStop(&PWMD3);
-}
-
-static PWMConfig pwmcfg = {
-  440, // pwm frequency
-   440, // number of periods
-    pwmPeriodCallBack, // callback
-    {
-        {PWM_OUTPUT_ACTIVE_HIGH, NULL},          /* CH1 mode and callback.         */
-        {PWM_OUTPUT_DISABLED, NULL},             /* CH2 mode and callback.         */
-        {PWM_OUTPUT_DISABLED, NULL},             /* CH3 mode and callback.         */
-        {PWM_OUTPUT_DISABLED, NULL}              /* CH4 mode and callback.         */
-    },
-  0,                                        /* Control Register 2.            */
-  0                                         /* DMA/Interrupt Enable Register. */
-};
-
-void playSound(void) {
-    palSetPadMode(GPIOA, 6, PAL_MODE_STM32_ALTERNATE_PUSHPULL); //
-    pwmStart(&PWMD3, &pwmcfg);
-
-    pwmEnableChannel(&PWMD3, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD3, 5000));
-}
-
-
-// end experiment
+#include "sound.h"
 
 
 #ifndef DEBOUNCE
@@ -117,7 +86,11 @@ void matrix_init(void)
   init_cols();
 
   initFaxPanel();
-  playSound();
+  playNote(NOTE_E6, 150);
+  wait_ms(200);
+  playNote(NOTE_A6, 150);
+  wait_ms(200);
+  playNote(NOTE_E7, 225);
 
   unselect_rows();
 

@@ -35,11 +35,18 @@ void write259(uint8_t data, uint8_t output) {
     if (data) {
         data=1;
     }
+    write374(data+output*2+16);
     write374(data+output*2);
-
     write374(data+output*2+16);
 }
 
+void mute(void) {
+    write259(1, 7);
+}
+
+void unmute(void) {
+    write259(0, 7);
+}
 
 void initFaxPanel(void) {
   palSetPadMode(GPIOA, 0, PAL_MODE_OUTPUT_PUSHPULL); // 74374 clock, latches on low to high event
@@ -50,8 +57,8 @@ void initFaxPanel(void) {
   palClearPad(GPIOA, 6); // speaker
 
   setPortBMode(PAL_MODE_OUTPUT_PUSHPULL);
-  write259(0, 7); // enables beeps
 
+  mute();
   write259(LEDOFF, 0); // send
   write259(LEDOFF, 1); // receive
   write259(LEDOFF, 2); // auto receive

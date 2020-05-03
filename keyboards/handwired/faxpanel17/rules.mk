@@ -17,5 +17,5 @@ MCU = STM32F103
 OPT_DEFS += -DCORTEX_ENABLE_WFI_IDLE=TRUE
 
 # project specific files
-SRC = LiquidCrystal.c hardware.c matrix.c led.c customBehaviour.c
+SRC = LiquidCrystal.c hardware.c matrix.c led.c customBehaviour.c sound.c
 
