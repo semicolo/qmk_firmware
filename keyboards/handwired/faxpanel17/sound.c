@@ -12,9 +12,9 @@ static void notePlayCallBack(void *arg) {
 }
 
 static PWMConfig pwmcfg = {
-    SOUNDPWMFREQUENCY,                // pwm frequency
-    SOUNDPWMFREQUENCY/220,                // number of periods
-    NULL,  // callback
+    SOUNDPWMFREQUENCY,        // pwm frequency
+    SOUNDPWMFREQUENCY / 220,  // number of periods
+    NULL,                     // callback
     {
         {PWM_OUTPUT_ACTIVE_HIGH, NULL}, /* CH1 mode and callback.         */
         {PWM_OUTPUT_DISABLED, NULL},    /* CH2 mode and callback.         */
@@ -27,7 +27,7 @@ static PWMConfig pwmcfg = {
 
 void playNote(uint16_t frequency, uint16_t ms) {
     unmute();
-    pwmcfg.period = SOUNDPWMFREQUENCY/frequency;
+    pwmcfg.period = SOUNDPWMFREQUENCY / frequency;
     palSetPadMode(GPIOA, 6, PAL_MODE_STM32_ALTERNATE_PUSHPULL);  //
     pwmStart(&PWMD3, &pwmcfg);
     pwmEnableChannel(&PWMD3, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD3, 5000));
@@ -39,7 +39,7 @@ void playSong(void) {
 
 void playSound(void) {
     unmute();
-    pwmcfg.period = SOUNDPWMFREQUENCY/NOTE_C4;
+    pwmcfg.period = SOUNDPWMFREQUENCY / NOTE_C4;
     palSetPadMode(GPIOA, 6, PAL_MODE_STM32_ALTERNATE_PUSHPULL);  //
     pwmStart(&PWMD3, &pwmcfg);
 

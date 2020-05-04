@@ -25,13 +25,13 @@
  * Board identifier.
  */
 #define BOARD_GENERIC_STM32_F103
-#define BOARD_NAME              "Generic STM32F103x board"
+#define BOARD_NAME "Generic STM32F103x board"
 
 /*
  * Board frequencies.
  */
-#define STM32_LSECLK            32768
-#define STM32_HSECLK            8000000
+#define STM32_LSECLK 32768
+#define STM32_HSECLK 8000000
 
 /*
  * MCU type, supported types are defined in ./os/hal/platforms/hal_lld.h.
@@ -44,9 +44,9 @@
 
 /* on-board */
 
-#define GPIOC_LED               13
-#define GPIOD_OSC_IN            0
-#define GPIOD_OSC_OUT           1
+#define GPIOC_LED 13
+#define GPIOD_OSC_IN 0
+#define GPIOD_OSC_OUT 1
 
 /* Backlighting */
 
@@ -89,27 +89,27 @@
  * Everything input with pull-up except:
  * PA0-2 - Push Pull output 50MHz
  */
-#define VAL_GPIOACRL            0x88888333      /*  PA7...PA0 */
-#define VAL_GPIOACRH            0x88888888      /* PA15...PA8 */
-#define VAL_GPIOAODR            0xFFFFFFFF
+#define VAL_GPIOACRL 0x88888333 /*  PA7...PA0 */
+#define VAL_GPIOACRH 0x88888888 /* PA15...PA8 */
+#define VAL_GPIOAODR 0xFFFFFFFF
 
 /*
  * Port B setup.
  * PB0-7 input with pull-up
  * PB8-15 - Push Pull output 50MHz
  */
-#define VAL_GPIOBCRL            0x88888888      /*  PB7...PB0 */
-#define VAL_GPIOBCRH            0x33333333      /* PB15...PB8 */
-#define VAL_GPIOBODR            0xFFFFFFFF
+#define VAL_GPIOBCRL 0x88888888 /*  PB7...PB0 */
+#define VAL_GPIOBCRH 0x33333333 /* PB15...PB8 */
+#define VAL_GPIOBODR 0xFFFFFFFF
 
 /*
  * Port C setup.
  * Everything input with pull-up except:
  * PC13    - Push Pull output  (LED).
  */
-#define VAL_GPIOCCRL            0x88888888      /*  PC7...PC0 */
-#define VAL_GPIOCCRH            0x88388888      /* PC15...PC8 */
-#define VAL_GPIOCODR            0xFFFFFFFF
+#define VAL_GPIOCCRL 0x88888888 /*  PC7...PC0 */
+#define VAL_GPIOCCRH 0x88388888 /* PC15...PC8 */
+#define VAL_GPIOCODR 0xFFFFFFFF
 
 /*
  * Port D setup.
@@ -117,17 +117,17 @@
  * PD0  - Normal input (XTAL).
  * PD1  - Normal input (XTAL).
  */
-#define VAL_GPIODCRL            0x88888844      /*  PD7...PD0 */
-#define VAL_GPIODCRH            0x88888888      /* PD15...PD8 */
-#define VAL_GPIODODR            0xFFFFFFFF
+#define VAL_GPIODCRL 0x88888844 /*  PD7...PD0 */
+#define VAL_GPIODCRH 0x88888888 /* PD15...PD8 */
+#define VAL_GPIODODR 0xFFFFFFFF
 
 /*
  * Port E setup.
  * Everything input with pull-up
  */
-#define VAL_GPIOECRL            0x88888888      /*  PE7...PE0 */
-#define VAL_GPIOECRH            0x88888888      /* PE15...PE8 */
-#define VAL_GPIOEODR            0xFFFFFFFF
+#define VAL_GPIOECRL 0x88888888 /*  PE7...PE0 */
+#define VAL_GPIOECRH 0x88888888 /* PE15...PE8 */
+#define VAL_GPIOEODR 0xFFFFFFFF
 
 /*
  * USB bus activation macro, required by the USB driver.
@@ -152,16 +152,18 @@
 /*
 #define usb_lld_disconnect_bus(usbp) palSetPad(GPIOB, GPIOB_USB_DISC)
 */
-#define usb_lld_disconnect_bus(usbp) palSetPadMode(GPIOA, 12, PAL_MODE_OUTPUT_PUSHPULL); palClearPad(GPIOA, 12);
+#define usb_lld_disconnect_bus(usbp)                    \
+    palSetPadMode(GPIOA, 12, PAL_MODE_OUTPUT_PUSHPULL); \
+    palClearPad(GPIOA, 12);
 
 #if !defined(_FROM_ASM_)
-#ifdef __cplusplus
+#    ifdef __cplusplus
 extern "C" {
-#endif
-  void boardInit(void);
-#ifdef __cplusplus
+#    endif
+void boardInit(void);
+#    ifdef __cplusplus
 }
-#endif
+#    endif
 #endif /* _FROM_ASM_ */
 
 #endif /* _BOARD_H_ */

@@ -40,7 +40,9 @@ uint8_t enteredPIN[MAXPINLENGTH];  // max length of PIN
 uint8_t enteredPINIndex = 0;
 
 uint8_t pinMatches(void) {
-    if (enteredPINIndex != strlen(FAXPANELPIN)) return false;
+    if (enteredPINIndex != strlen(FAXPANELPIN)) {
+        return false;
+    }
     return !(strncmp(FAXPANELPIN, (char *)enteredPIN, strlen(FAXPANELPIN)));
 }
 
@@ -87,7 +89,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     break;
                 default:
                     enteredPIN[enteredPINIndex] = keycodeToDigit(keycode) + '0';
-                    if (enteredPINIndex == 0) clearCustomString();
+                    if (enteredPINIndex == 0) {
+                        clearCustomString();
+                    }
                     customString[enteredPINIndex] = '*';
                     enteredPINIndex++;
                     displayString((char *)customString);
@@ -191,8 +195,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     if (record->event.pressed) {
-        if (macroIndex < 0) macroIndex = MACROSNUMBER - 1;
-        if (macroIndex >= MACROSNUMBER) macroIndex = 0;
+        if (macroIndex < 0) {
+            macroIndex = MACROSNUMBER - 1;
+        }
+        if (macroIndex >= MACROSNUMBER) {
+            macroIndex = 0;
+        }
         displayMacroName(macroIndex);
     }
     return false;

@@ -54,32 +54,30 @@
 #define EN_PIN 64
 #define RS_PIN 128
 
-  void LiquidCrystalBegin(uint8_t cols, uint8_t rows);
-  void LiquidCrystalBeginWithCharSize(uint8_t cols, uint8_t rows, uint8_t charsize);
+void LiquidCrystalBegin(uint8_t cols, uint8_t rows);
+void LiquidCrystalBeginWithCharSize(uint8_t cols, uint8_t rows, uint8_t charsize);
 
-  void LiquidCrystalClear(void);
-  void LiquidCrystalHome(void);
+void LiquidCrystalClear(void);
+void LiquidCrystalHome(void);
 
-  void LiquidCrystalPrintNChars(const char* fmt, int num);
-  void LiquidCrystalPrint(const char* fmt, ...);
-  void LiquidCrystalNoDisplay(void);
-  void LiquidCrystalDisplay(void);
-  void LiquidCrystalNoBlink(void);
-  void LiquidCrystalBlink(void);
-  void LiquidCrystalNoBacklight(void);
-  void LiquidCrystalBacklight(void);
-  void LiquidCrystalNoCursor(void);
-  void LiquidCrystalCursor(void);
-  void LiquidCrystalScrollDisplayLeft(void);
-  void LiquidCrystalScrollDisplayRight(void);
-  void LiquidCrystalLeftToRight(void);
-  void LiquidCrystalRightToLeft(void);
-  void LiquidCrystalAutoscroll(void);
-  void LiquidCrystalNoAutoscroll(void);
-  void LiquidCrystalSetBrightness(uint8_t);
+void LiquidCrystalPrintNChars(const char* fmt, int num);
+void LiquidCrystalPrint(const char* fmt, ...);
+void LiquidCrystalNoDisplay(void);
+void LiquidCrystalDisplay(void);
+void LiquidCrystalNoBlink(void);
+void LiquidCrystalBlink(void);
+void LiquidCrystalNoBacklight(void);
+void LiquidCrystalBacklight(void);
+void LiquidCrystalNoCursor(void);
+void LiquidCrystalCursor(void);
+void LiquidCrystalScrollDisplayLeft(void);
+void LiquidCrystalScrollDisplayRight(void);
+void LiquidCrystalLeftToRight(void);
+void LiquidCrystalRightToLeft(void);
+void LiquidCrystalAutoscroll(void);
+void LiquidCrystalNoAutoscroll(void);
+void LiquidCrystalSetBrightness(uint8_t);
 
-  void LiquidCrystalSetRowOffsets(int row1, int row2, int row3, int row4);
-  void LiquidCrystalCreateChar(uint8_t, uint8_t[]);
-  void LiquidCrystalSetCursor(uint8_t, uint8_t);
-
-
+void LiquidCrystalSetRowOffsets(int row1, int row2, int row3, int row4);
+void LiquidCrystalCreateChar(uint8_t, uint8_t[]);
+void LiquidCrystalSetCursor(uint8_t, uint8_t);

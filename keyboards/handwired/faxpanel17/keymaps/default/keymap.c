@@ -19,9 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "customKeyCodes.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [0] = LAYOUT_17(
-KC_5, KC_4,   KC_3,   KC_2, KC_1,  KC_ASTERISK,   CUSTKC_RESET,   CUSTKC_MODE, \
- KC_0, KC_9,   KC_8,   KC_7,KC_6,  KC_HASH,   CUSTKC_FUNCTION,   CUSTKC_CONTRAST, \
-CUSTKC_START)
+    [0] = LAYOUT_17(KC_5, KC_4, KC_3, KC_2, KC_1, KC_ASTERISK, CUSTKC_RESET, CUSTKC_MODE,
+                     KC_0, KC_9, KC_8, KC_7, KC_6, KC_HASH, CUSTKC_FUNCTION, CUSTKC_CONTRAST,
+                     CUSTKC_START)
 };
-
