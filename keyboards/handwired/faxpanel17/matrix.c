@@ -29,6 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "hardware.h"
 #include "LiquidCrystal.h"
 #include "sound.h"
+#include "song_list.h"
 
 #ifndef DEBOUNCE
 #    define DEBOUNCE 5
@@ -78,15 +79,13 @@ __attribute__((weak))
 void matrix_scan_user(void) {
 }
 
+static const float song_startup  [][2] = SONG(STARTUP_SOUND);
+
 void matrix_init(void) {
     init_cols();
 
     initFaxPanel();
-    playNote(NOTE_E6, 150);
-    wait_ms(200);
-    playNote(NOTE_A6, 150);
-    wait_ms(200);
-    playNote(NOTE_E7, 225);
+    PLAY_SONG(song_startup);
 
     unselect_rows();
 
