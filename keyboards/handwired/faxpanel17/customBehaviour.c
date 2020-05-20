@@ -27,6 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 bool locked    = true;
 int  songShift = 0;
+uint16_t startTimer = 0;
 
 static const float song1[][2]  = SONG(ROCK_A_BYE_BABY);
 static const float song2[][2]  = SONG(ODE_TO_JOY);
@@ -358,7 +359,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case CUSTKC_START:
             if (record->event.pressed) {
-                SEND_STRING(macros[macroIndex]);
+                if (startTimer == 0 || timer_elapsed(startTimer) > 2000){
+                    startTimer = timer_read();
+                    SEND_STRING(macros[macroIndex]);
+                } else {
+                    register_code(KC_ENTER);
+                    unregister_code(KC_ENTER);
+                    startTimer = 0;
+                }
             }
             return false;
         case KC_1:
